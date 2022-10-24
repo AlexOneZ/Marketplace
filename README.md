@@ -9,17 +9,17 @@
 Использовал следующее API: https://fakestoreapi.com
 
 # Папка с файлами для экрана корзины это "Cart". 
-CartViewController - отвечат за экран корзины.
-CartProductCell - отвечает за ячейку TableView CartViewController
+CartViewController - отвечат за экран корзины; \
+CartProductCell - отвечает за ячейку TableView CartViewController.
 
 # Папка с файлами для экрана товаров "ProductScreen"
-CategoryProductViewController - отвечает за экран с товарами определенной категории (например, электроники)
-ProductsCell - отвечает за ячейку TableView CategoryProductViewController
+CategoryProductViewController - отвечает за экран с товарами определенной категории (например, электроники); \
+ProductsCell - отвечает за ячейку TableView CategoryProductViewController; \
 ProductViewController - отвечает за экран выбранного товара. 
 
 # Папка с файлами для экрана категорий "CategoriesScreen"
-CategoryViewController - отвечает за экран категорий 
-CategoriesCell - отвечат за ячейку CollectionView CategoryViewController
+CategoryViewController - отвечает за экран категорий; \
+CategoriesCell - отвечат за ячейку CollectionView CategoryViewController.
 
 # Какие технологии использовал 
 1. Использовал только стандартные библиотеки 
