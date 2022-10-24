@@ -16,7 +16,6 @@ class CartViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.allowsSelection = true
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorColor = .systemGray4
         tableView.rowHeight = view.frame.height/6
@@ -40,7 +39,6 @@ class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.tableHeaderView.
         view.backgroundColor = .white
         
         tableView.register(CartProductCell.self, forCellReuseIdentifier: cellID)
@@ -48,7 +46,7 @@ class CartViewController: UIViewController {
         tableView.dataSource = self
         view.addSubview(tableView)
         setupContstraints()
-        print("cart open")
+        //print("cart open")
         loadContainer()
     }
     
@@ -105,7 +103,6 @@ extension CartViewController: UITableViewDelegate {
 
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(productsInCart.count)
         if let sections = fetchedResultController.sections {
             return sections[section].numberOfObjects
         }
@@ -113,10 +110,6 @@ extension CartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? CartProductCell
-//        let viewModel = productsInCart[indexPath.row]
-//        cell?.configure(viewModel)
-//        return cell ?? UITableViewCell
         let productData = fetchedResultController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? CartProductCell
         cell?.configure(productData)
@@ -154,10 +147,7 @@ extension CartViewController: NSFetchedResultsControllerDelegate {
             }
         case .update:
             if let indexPath = indexPath {
-//                let userInfo = fetchedResultController.object(at: indexPath)
-//                let cell = tableView.cellForRow(at: indexPath)
-//                let miniInfo = "\(userInfo.lastname ?? "") \(userInfo.name ?? "") , \(String(userInfo.birth))"
-//                cell!.textLabel?.text = miniInfo
+                print(indexPath)
             }
         case .move:
             if let indexPath = indexPath {

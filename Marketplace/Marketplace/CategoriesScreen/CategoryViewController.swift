@@ -78,7 +78,6 @@ extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoriesCell
-        //cell.backgroundColor = .red
         let viewModel = categories[indexPath.row]
         cell.configure(viewModel)
         return cell

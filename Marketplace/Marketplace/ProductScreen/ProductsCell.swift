@@ -47,8 +47,6 @@ class ProductsCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 1
-        //stackView.alignment = .
-        //stackView.distribution = .
         stackView.contentMode = .scaleToFill
         stackView.distribution = .fillEqually
         stackView.alignment = .fill

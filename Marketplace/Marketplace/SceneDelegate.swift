@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let categoryVC = CategoryViewController()
         let cartVC = CartViewController()
+        cartVC.viewDidLoad()
         let navigationController = UINavigationController(rootViewController: categoryVC)
         
         categoryVC.tabBarItem =  UITabBarItem(title: "Categories",

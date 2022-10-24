@@ -56,7 +56,6 @@ class CartProductCell: UITableViewCell {
         image.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
         
         priceLabel.widthAnchor.constraint(equalToConstant: contentView.frame.width/4).isActive = true
-        //priceLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 0).isActive = true
         priceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
         priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5).isActive = true
@@ -68,9 +67,8 @@ class CartProductCell: UITableViewCell {
     }
     
     func configure(_ viewModel: ProductData) {
-        //print("configur")
         titleLabel.text = viewModel.productTitle
         priceLabel.text = (viewModel.productPrice ?? "") + "$"
-        image.image = UIImage(data: viewModel.productImage!)
+        image.image = UIImage(data: viewModel.productImage ?? Data())
     }
 }

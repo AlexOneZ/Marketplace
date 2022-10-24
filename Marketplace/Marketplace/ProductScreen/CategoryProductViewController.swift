@@ -26,8 +26,6 @@ class CategoryProductViewController: UIViewController {
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(frame: CGRect(x: view.frame.width/2 - 75, y: 40, width: 150, height: 150))
-        //print(view.frame.width)
-        //indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
     }()
 // MARK: - ViewDidLoad

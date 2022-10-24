@@ -21,7 +21,6 @@ class CategoriesCell: UICollectionViewCell {
         label.textColor = .black
         label.clipsToBounds = true
         label.textAlignment = .center
-        //translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -39,7 +38,6 @@ class CategoriesCell: UICollectionViewCell {
         
         contentView.addSubview(iconCategoryLabel)
         contentView.addSubview(descriptionCategoryLabel)
-        //contentView.layer.cornerRadius = 12
         backgroundColor = .systemGray6
         
         setupView()
