@@ -51,7 +51,6 @@ class CategoryProductViewController: UIViewController {
     
     func productDownload(urlString: String) {
         activityIndicator.startAnimating()
-        //let formattedString = urlString.replacingOccurrences(of: " ", with: "")
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
@@ -60,7 +59,7 @@ class CategoryProductViewController: UIViewController {
         let task = URLSession.shared.dataTask(
             with: request) {
                 data, response, error in
-                DispatchQueue.main.async {
+                DispatchQueue.global().async {
                     [weak self] in
                     guard let self = self else { return }
                     print("async")
@@ -82,22 +81,22 @@ class CategoryProductViewController: UIViewController {
                                                                 ))
                                     if let title = product["title"] as? String {
                                         self.products[index].productTitle = title
-                                        //print(title)
                                     }
                                     if let description = product["description"] as? String {
                                         self.products[index].productDescription = description
                                     }
                                     if let price = product["price"] as? Double {
                                         self.products[index].productPrice = String(price)
-                                        //print(price)
                                     }
                                     if let imageURL = product["image"] as? String {
                                         self.products[index].productURLImage = imageURL
                                     }
                                     index += 1
                                 }
-                            self.tableView.reloadData()
-                            self.loadImages()
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                self.loadImages()
+                            }
                         }
                     }
                 }
@@ -173,7 +172,6 @@ extension CategoryProductViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print(products[indexPath.row].productDescription)
         let productVC = ProductViewController()
         productVC.product = products[indexPath.row]
         navigationController?.pushViewController(productVC,
