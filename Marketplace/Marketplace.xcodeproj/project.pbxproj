@@ -17,6 +17,7 @@
 		5B1302A8290432C90099D1B8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B1302A6290432C90099D1B8 /* Model.xcdatamodeld */; };
 		5B1302BB2904399B0099D1B8 /* ProductData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1302B92904399B0099D1B8 /* ProductData+CoreDataClass.swift */; };
 		5B1302BC2904399B0099D1B8 /* ProductData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1302BA2904399B0099D1B8 /* ProductData+CoreDataProperties.swift */; };
+		5B6A2DF02C20B297000CC9CE /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6A2DEF2C20B297000CC9CE /* File.swift */; };
 		5B9498CC28EF0317004F01B0 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498CB28EF0317004F01B0 /* ProductViewController.swift */; };
 		5B9498CE28EF17D6004F01B0 /* CartProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9498CD28EF17D6004F01B0 /* CartProductCell.swift */; };
 		5BB3847D28E594BC00872490 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB3847C28E594BC00872490 /* CartViewController.swift */; };
@@ -38,6 +39,7 @@
 		5B1302A7290432C90099D1B8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5B1302B92904399B0099D1B8 /* ProductData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5B1302BA2904399B0099D1B8 /* ProductData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5B6A2DEF2C20B297000CC9CE /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5B9498CB28EF0317004F01B0 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		5B9498CD28EF17D6004F01B0 /* CartProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductCell.swift; sourceTree = "<group>"; };
 		5BB3847C28E594BC00872490 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		5B02EC4B28E4234300124D5B = {
 			isa = PBXGroup;
 			children = (
+				5B6A2DEF2C20B297000CC9CE /* File.swift */,
 				5B10E6C829054084000CF9F5 /* CoreData */,
 				5B02EC5628E4234300124D5B /* Marketplace */,
 				5B02EC5528E4234300124D5B /* Products */,
@@ -209,6 +212,7 @@
 				5B9498CE28EF17D6004F01B0 /* CartProductCell.swift in Sources */,
 				5B02EC5A28E4234300124D5B /* SceneDelegate.swift in Sources */,
 				5B9498CC28EF0317004F01B0 /* ProductViewController.swift in Sources */,
+				5B6A2DF02C20B297000CC9CE /* File.swift in Sources */,
 				5BB3847F28E59DB100872490 /* CatgoriesCell.swift in Sources */,
 				5B1302A8290432C90099D1B8 /* Model.xcdatamodeld in Sources */,
 				5B1302A529042E9F0099D1B8 /* Keys.swift in Sources */,
@@ -364,21 +368,26 @@
 				DEVELOPMENT_TEAM = M5D7V4YFL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Marketplace/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Simple Marketplace";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlekseyKobyakov.Marketplace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -392,21 +401,26 @@
 				DEVELOPMENT_TEAM = M5D7V4YFL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Marketplace/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Simple Marketplace";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlekseyKobyakov.Marketplace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
