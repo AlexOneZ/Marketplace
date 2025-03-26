@@ -142,6 +142,7 @@
 				5B02EC5028E4234300124D5B /* Sources */,
 				5B02EC5128E4234300124D5B /* Frameworks */,
 				5B02EC5228E4234300124D5B /* Resources */,
+				5BA6121C2D942DFD00FF5BD2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -197,6 +198,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5BA6121C2D942DFD00FF5BD2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftformat > /dev/null; then\n    swiftformat .\n    echo \"Start scanning\"\nelse \n    echo \"WARNING: SwiftLing not installed!\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B02EC5028E4234300124D5B /* Sources */ = {

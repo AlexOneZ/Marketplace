@@ -6,10 +6,7 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-public class ProductData: NSManagedObject {
-
-}
+public class ProductData: NSManagedObject {}
