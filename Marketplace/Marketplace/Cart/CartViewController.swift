@@ -5,23 +5,23 @@
 //  Created by Алексей Кобяков on 29.09.2022.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class CartViewController: UIViewController {
     private let persistentContainer = NSPersistentContainer(name: "Model")
     let cellID: String = "CartProductCell"
     var productsInCart: [Product] = []
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.separatorColor = .systemGray4
-        tableView.rowHeight = view.frame.height/6
+        tableView.rowHeight = view.frame.height / 6
         return tableView
     }()
-    
+
     private lazy var fetchedResultController: NSFetchedResultsController<ProductData> = {
         let fetchRequest = ProductData.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "productTitle", ascending: true)
@@ -34,44 +34,44 @@ class CartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear")
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         tableView.register(CartProductCell.self, forCellReuseIdentifier: cellID)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         setupContstraints()
-        //print("cart open")
+        // print("cart open")
         loadContainer()
     }
-    
+
     private func setupContstraints() {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-    
+
     func updateTableViewElements(product: Product) {
-        self.productsInCart.append(product)
+        productsInCart.append(product)
         print(productsInCart.count)
-        //saveCart()
+        // saveCart()
         print("Add to cart item")
-        let productData = ProductData.init(entity: NSEntityDescription.entity(forEntityName: "ProductData", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext)
+        let productData = ProductData(entity: NSEntityDescription.entity(forEntityName: "ProductData", in: persistentContainer.viewContext)!, insertInto: persistentContainer.viewContext)
         productData.productImage = product.productImage.pngData()
         productData.productPrice = product.productPrice
         productData.productDescription = product.productDescription
         productData.productTitle = product.productTitle
         try? productData.managedObjectContext?.save()
     }
-    
+
     private func loadContainer() {
-        persistentContainer.loadPersistentStores { persistentStoreDescription, error in
+        persistentContainer.loadPersistentStores { _, error in
             if let error = error {
                 print("Unable to load persistent store")
                 print("\(error)")
@@ -86,42 +86,45 @@ class CartViewController: UIViewController {
         print("FetchedObj \(fetchedResultController.sections?[0].numberOfObjects ?? 99)")
     }
 }
+
 // MARK: - extenstions
+
 extension CartViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection _: Int) -> UIView? {
         let label = UILabel()
-        label.frame = CGRect.init(x: 15, y: 5, width: tableView.frame.width-10, height: tableView.frame.height-10)
-                label.text = "Cart"
+        label.frame = CGRect(x: 15, y: 5, width: tableView.frame.width - 10, height: tableView.frame.height - 10)
+        label.text = "Cart"
         label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textColor = .black
         return label
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
         45
     }
 }
 
 extension CartViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultController.sections {
             return sections[section].numberOfObjects
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let productData = fetchedResultController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? CartProductCell
         cell?.configure(productData)
         return cell ?? UITableViewCell()
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
         true
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle == .delete) {
+
+    func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let productData = fetchedResultController.object(at: indexPath)
             persistentContainer.viewContext.delete(productData)
             try? persistentContainer.viewContext.save()
@@ -130,16 +133,15 @@ extension CartViewController: UITableViewDataSource {
 }
 
 extension CartViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
+    func controllerDidChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
+
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>, didChange _: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             if let indexPath = newIndexPath {

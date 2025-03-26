@@ -8,11 +8,8 @@
 import Foundation
 
 final class MyClass: Sendable {
-    
     @Sendable func loadPages() async {
-        await withTaskGroup(of: Void.self) { group in
-            
+        await withTaskGroup(of: Void.self) { _ in
         }
     }
-    
 }

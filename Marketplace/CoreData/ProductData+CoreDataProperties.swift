@@ -6,23 +6,18 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension ProductData {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ProductData> {
+public extension ProductData {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<ProductData> {
         return NSFetchRequest<ProductData>(entityName: "ProductData")
     }
 
-    @NSManaged public var productImage: Data?
-    @NSManaged public var productTitle: String?
-    @NSManaged public var productPrice: String?
-    @NSManaged public var productDescription: String?
-
+    @NSManaged var productImage: Data?
+    @NSManaged var productTitle: String?
+    @NSManaged var productPrice: String?
+    @NSManaged var productDescription: String?
 }
 
-extension ProductData : Identifiable {
-
-}
+extension ProductData: Identifiable {}
