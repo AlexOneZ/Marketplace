@@ -39,3 +39,7 @@ CategoriesCell - отвечат за ячейку CollectionView CategoryViewCon
  - UICollectionView
 3. Для сохранения корзины использовал CoreData.
 
+'''
+Brew install swiftformat
+'''
+
